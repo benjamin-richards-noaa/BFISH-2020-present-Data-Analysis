@@ -1,0 +1,120 @@
+###############################################################################################################
+## BFISH data processing ####
+## BFISH Survey Design Analysis ##
+
+## This script is for processing BFISH data from years 2020-present ##
+
+#this script creates standard plots of species-level metrics and survey performance per year
+
+#created by Benjamin L. Richards (benjaminrichards@noaa.gov) 
+###############################################################################################################
+setwd("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/WORKING")
+
+#read in biomass by species for all survey years
+BFISH_2016 <- read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2016-2019 Data Analysis/FINAL/BFISH_2016_F Deep7 Biomass by Species.csv")
+BFISH_2017 <- read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2016-2019 Data Analysis/FINAL/BFISH_2017_F Deep7 Biomass by Species.csv")
+BFISH_2018 <- read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2016-2019 Data Analysis/FINAL/BFISH_2018_F Deep7 Biomass by Species.csv")
+BFISH_2019 <- read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2016-2019 Data Analysis/FINAL/BFISH_2019_F Deep7 Biomass by Species.csv")
+BFISH_2020 <- read.csv("BFISH_2020_F Deep7 Biomass by Species.csv")
+
+sp <- unique(subset(SPECIES_TABLE, subset = SPECIES_CD %in% d7, select = c("SPECIES_CD","SCIENTIFIC_NAME","COMMON_NAME")))
+
+BFISH_biomass <- merge(rbind(BFISH_2016,BFISH_2017,BFISH_2018,BFISH_2019,BFISH_2020), sp, "SPECIES_CD")
+
+
+# Plot Relative Biomass by Species & Year ---------------------------------
+# 
+formatter <- function(...){
+  function(x) format(round(x, 2), ...)
+}
+
+ggplot(data = BFISH_biomass, aes(x = as.factor(YEAR), y = avBiomass_kg, group = 1, color = COMMON_NAME)) +
+  facet_grid(COMMON_NAME ~ ., scales = "free") +
+  scale_y_continuous(labels = formatter(nsmall = 2)) +
+  theme_bw() +
+  geom_line(color = "grey33") +
+  geom_errorbar(aes(ymin = avBiomass_kg - SE_avBiomass_kg, ymax = avBiomass_kg + SE_avBiomass_kg), width = 0.05, color = "grey33") +
+  geom_point(size = 3) +
+  scale_color_manual(values = c("Ehu" = "#F26739",
+                                "Gindai" = "#EF3E24",
+                                "Hapuupuu" = "#680B10",
+                                "Kalekale" = "#A91E23",
+                                "Lehi" = "#D12027",
+                                "Onaga" = "#F15B26",
+                                "Opakapaka" = "#F47B50"),
+                     guide = FALSE) +
+  labs(x = "Survey Year", y = "Average Biomass (kg) ±SE)") +
+  theme(axis.text = element_text(size = 9),
+        axis.title = element_text(size=12,
+                                  face = "bold"),
+        axis.title.y = element_text(margin = margin(r=7.5)))
+
+ggsave("BFISH Deep 7 Relative Abundance by Species by Year.pdf", width = 8.5, height = 11, units = "in")
+ggsave("BFISH Deep 7 Relative Abundance by Species by Year.png", width = 8.5, height = 11, units = "in")
+
+
+# Compute & Plot biomass anomolies (annual change from running average) ------------------------------
+
+cg.1 <- subset(BFISH_biomass, select = c("COMMON_NAME", "SPECIES_CD", "YEAR", "avBiomass_kg", "SE_avBiomass_kg"))
+
+cg.2 <- ddply(cg.1, .(SPECIES_CD), summarize,
+              mean_Biomass_kg = mean(avBiomass_kg))
+
+cg.3 <- merge(cg.1, cg.2,"SPECIES_CD")
+
+cg.3$anom <- cg.3$avBiomass_kg - cg.3$mean_Biomass_kg
+
+ggplot(data = cg.3, aes(x = as.factor(YEAR), y = anom, group = 1, color = COMMON_NAME)) +
+  geom_hline(linetype = "longdash", yintercept = 0, size = 0.5, color = "black") +
+  facet_grid(COMMON_NAME ~ ., scales = "free") +
+  scale_y_continuous(labels = formatter(nsmall = 2)) +
+  theme_bw() +
+  geom_line(color = "grey33") +
+  geom_errorbar(aes(ymin = cg.3$anom - cg.3$SE_avBiomass_kg, ymax = cg.3$anom + cg.3$SE_avBiomass_kg), width = 0.1, color = "grey33") +
+  geom_point(size = 3) +
+  scale_color_manual(values = c("Ehu" = "#F26739",
+                                "Gindai" = "#EF3E24",
+                                "Hapuupuu" = "#680B10",
+                                "Kalekale" = "#A91E23",
+                                "Lehi" = "#D12027",
+                                "Onaga" = "#F15B26",
+                                "Opakapaka" = "#F47B50"),
+                     guide = FALSE) +
+  labs(x = "Survey Year", y = "Relative Biomass: Deviation from Running Mean (kg/unit area)") +
+  theme(axis.text = element_text(size = 9),
+        axis.title = element_text(size=12,
+                                  face = "bold"),
+        axis.title.y = element_text(margin = margin(r=5)))
+
+ggsave("BFISH Deep 7 Biomass Anomalies by Species by Year.pdf", width = 8.5, height = 11, units = "in")
+ggsave("BFISH Deep 7 Biomass Anomalies by Species by Year.png", width = 8.5, height = 11, units = "in")
+
+
+# Plotting for 1-pager ----------------------------------------------------
+
+
+ggplot(data = cg.3, aes(x = as.factor(YEAR), y = anom, group = 1, color = COMMON_NAME)) +
+  geom_hline(linetype = "longdash", yintercept = 0, size = 0.5, color = "black") +
+  facet_grid(COMMON_NAME ~ ., scales = "free") +
+  scale_y_continuous(labels = formatter(nsmall = 2)) +
+  theme_bw() +
+  geom_line(size = 0.5, color = "grey33") +
+  geom_errorbar(aes(ymin = cg.3$anom - cg.3$SE_avBiomass_kg, ymax = cg.3$anom + cg.3$SE_avBiomass_kg), size = 0.4, width = 0.2, color = "grey33") +
+  geom_point(size = 1) +
+  scale_color_manual(values = c("Ehu" = "#F26739",
+                                "Gindai" = "#EF3E24",
+                                "Hapuupuu" = "#680B10",
+                                "Kalekale" = "#A91E23",
+                                "Lehi" = "#D12027",
+                                "Onaga" = "#F15B26",
+                                "Opakapaka" = "#F47B50"),
+                     guide = FALSE) +
+  labs(x = "Survey Year", y = "Relative Biomass Anomolies: Deviation from Running Mean (kg/unit area)") +
+  theme(axis.text = element_text(size = 9),
+        axis.title = element_text(size=10),
+        axis.title.y = element_text(margin = margin(r=5)),
+        panel.background = element_rect(fill = "transparent", color = NA),
+        plot.background = element_rect(fill = "transparent", color = NA)
+        )
+
+ggsave("BFISH Deep 7 Biomass Anomalies by Species by Year (1-pager).png", width = 2.75, height =7, units = "in", bg = "transparent")

@@ -1,0 +1,208 @@
+"SPECIES_CD","SCIENTIFIC_NAME","COMMON_NAME","SPECIES_TYPE_CD","A","B","GCF"
+"PRSI","Pristipomoides sieboldii","Kalekale","DPS",2.243e-05,2.932,0.1364
+"PSAU","Pristipomoides auricilla","Goldflag jobfish",NA,NA,NA,NA
+"PRSP","Pristipomoides sp.","Jobfish","DPS",NA,NA,NA
+"PRZO","Pristipomoides zonatus","Gindai","DPS",3.526e-05,2.859,1
+"PSDE","Pseudocaranx cheilio","White trevally","OTB",NA,NA,NA
+"PSHA","Pseudanthias hawaiiensis","Hawaiian Anthias","OTH",NA,NA,NA
+"PSSP","Pseudanthias sp.","Anthias sp.","OTH",NA,NA,NA
+"PUFF","Tetraodontid sp.","Puffer sp.","OTH",NA,NA,NA
+"PUFF","Tetraodontid sp.","Puffer sp.","OTH",NA,NA,NA
+"PUFF","Tetraodontid sp.","Puffer sp.","OTH",NA,NA,NA
+"RAFI","Randallichthys filamentosus","Randall's snapper","OTB",NA,NA,NA
+"RASP","Rajiform sp.","Ray sp.","OTH",NA,NA,NA
+"RAZO","Xyrichtyinae sp.","Razorfish","OTH",NA,NA,NA
+"ROEX","Roa excelsa","Hawaiian gold-barred butterflyfish","OTH",NA,NA,NA
+"SARD","Sarda sp.","Bonito","OTH",NA,NA,NA
+"SARD","Sarda sp.","Bonito","OTH",NA,NA,NA
+"SARD","Sarda sp.","Bonito","OTH",NA,NA,NA
+"SEDU","Seriola dumerili","Greater amberjack","OTB",NA,NA,NA
+"SEDU","Seriola dumerili","Greater amberjack","OTB",NA,NA,NA
+"SERI","Seriola rivoliana","Almaco jack","OTB",NA,NA,NA
+"SERI","Seriola rivoliana","Almaco jack","OTB",NA,NA,NA
+"SESP","Seriola sp.","Amberjack sp.","OTB",NA,NA,NA
+"CASP","Caranx sp.","Jack sp.","OTB",NA,NA,NA
+"CASP","Caranx sp.","Jack sp.","OTB",NA,NA,NA
+"SHAR","Carcharinid sp.","Requiem shark sp.","SHK",NA,NA,NA
+"SHAR","Carcharhinus sp.","Requiem shark sp.","SHK",NA,NA,NA
+"SHAR","Carcharinid sp.","Requiem shark sp.","SHK",NA,NA,NA
+"SHAR","Elasmobranch sp.","Shark sp. ","SHK",NA,NA,NA
+"SHAR","Shark","Shark sp. ","SHK",NA,NA,NA
+"SHAR","Shark or Teleost","Shark sp. ","SHK",NA,NA,NA
+"SHRK","Chondrichthid sp.","Shark sp. ","SHK",NA,NA,NA
+"SHRK","Chondrichthid sp.","Shark sp. ","SHK",NA,NA,NA
+"SPPA","Sphoeroides pachygaster","Blunthead puffer","OTH",NA,NA,NA
+"SPBA","Sphyraena barracuda","Great barracuda","OTH",NA,NA,NA
+"SPHE","Sphyraena helleri","Heller's Barracuda","OTH",NA,NA,NA
+"SQSP","Squalus sp.","Green eye shark","SHK",NA,NA,NA
+"SQMI","Squalus hawaiiensis","Green eye shark","SHK",NA,NA,NA
+"SQMI","Squalus hawaiiensis","Green eye shark","SHK",NA,NA,NA
+"SUFR","Sufflamea fraenatum","Bridled Triggerfish","OTH",NA,NA,NA
+"SUFR","Sufflamen fraenatum","Masked triggerfish","OTH",NA,NA,NA
+"SYSP","Symphysanodontid sp.","Slopefish","OTH",NA,NA,NA
+"SYSP","Symphysanodon sp.","Slopefish","OTH",NA,NA,NA
+"SYTY","Symphysanodon typus","Insular shelf beauty","OTH",NA,NA,NA
+"THAL","Thunnus albacares","Yellowfin tuna","OTH",NA,NA,NA
+"THAL","Thunnus albacares","Yellowfin tuna","OTH",NA,NA,NA
+"THAL","Thunnus albacares","Ahi","OTH",NA,NA,NA
+"THDU","Thalassoma duperrey","Saddle wrasse","OTH",NA,NA,NA
+"TOFL","Torquigener florealis","Floral puffer","OTH",NA,NA,NA
+"TORA","Torquigener randalli","Randall's puffer","OTH",NA,NA,NA
+"TRIG","Balistidae","Triggerfish sp.","OTH",NA,NA,NA
+"TRIG","Balistid sp.","Triggerfish sp.","OTH",NA,NA,NA
+"TRIG","Balistid sp.","Triggerfish sp.","OTH",NA,NA,NA
+"TRMY","Trachinocephalus myhops ","Lizardfish","OTH",NA,NA,NA
+"TROB","Triaenodon obesus","Whitetip Reef Shark","OTH",NA,NA,NA
+"TROB","Triaenodon obesus","Whitetip Reef Shark","OTH",NA,NA,NA
+"WRAS","Labrid","Wrasse sp.","OTH",NA,NA,NA
+"XACA","Xanthichthys caeruleolineatus","Bluelined triggerfish","OTH",NA,NA,NA
+"XAME","Xanthichthys mento","Redtail triggerfish","OTH",NA,NA,NA
+"ZACO","Zanclus cornutus","Moorish idol","OTH",NA,NA,NA
+"ZAKE","Zalanthias kelloggi","Eastern flower porgy","OTH",NA,NA,NA
+"NESC","Neomonachus schauinslandi","Hawaiian Monk Seal",NA,NA,NA,NA
+"CASC","Caprodon schlegelii","Sunrise Perch","OTH",NA,NA,NA
+"SCRU","Scarus rubroviolaceus","Ember Parrotfish","OTH",NA,NA,NA
+"BAPO","Balistes polylepis","Finescale triggerfish","OTH",NA,NA,NA
+"ACTH","Acanthurus thompsoni","Thompson's surgeonfish","OTH",NA,NA,NA
+"CAUN","Caprodon unicolor","Hawaiian Sunrise Perch","OTH",NA,NA,NA
+"ACBL","Acanthurus blochii","Ringtail surgeonfish","OTH",NA,NA,NA
+"PLSP","Plesiobatis sp.","Deep-water stingray","OTH",NA,NA,NA
+"ACDU","Acanthurus dussumieri","Eyestripe surgeonfish","OTH",NA,NA,NA
+"ACSP","Acanthurid sp.","Surgeonfish sp.","OTH",NA,NA,NA
+"ACSP","Acanthurid","Surgeonfish sp.","OTH",NA,NA,NA
+"ACXA","Acanthurus xanthopterus","Yellowfin surgeonfish","OTH",NA,NA,NA
+"AENA","Aetobatus narinari","Spotted eagle ray","OTH",NA,NA,NA
+"AKUU","Katsuwonus pelamis","Skipjack tuna","OTH",NA,NA,NA
+"ALMO","Aluterus monoceros","Unicorn leatherjacket filefish","OTH",NA,NA,NA
+"ALSP","Alopias sp.","Thresher shark",NA,NA,NA,NA
+"ALSP","Alopiidae","Thresher shark",NA,NA,NA,NA
+"ANSP","Antigonia sp.","Boarfish sp.","OTH",NA,NA,NA
+"APAR","Apolemichthys arcuatus","Banded angelfish","OTH",NA,NA,NA
+"APFU","Aphareus furca","Small toothed jobfish","OTB",NA,NA,NA
+"APFU","Aphareus furca","Small toothed jobfish","OTB",NA,NA,NA
+"APRU","Aphareus rutilans","Lehi","DPS",0.0001298,2.458,1
+"APVI","Aprion virescens","Green jobfish","OTB",2.1e-05,2.9052,NA
+"ARBR","Ariomma brevimanus","Indian driftfish",NA,NA,NA,NA
+"AUCH","Aulostomus chinensis","Chinese trumpetfish","OTH",NA,NA,NA
+"BEDA","Beryx decadactylus","Alfonsino","OTB",NA,NA,NA
+"BIGE","Priacanthid sp.","Big eye sp.","OTH",NA,NA,NA
+"BOAL","Bodianus albotaeniatus","Hawaiian hogfish","OTH",NA,NA,NA
+"BUTT","Chaetodontid sp.","Butterflyfish sp.","OTH",NA,NA,NA
+"BUTT","Chaetodontid","Butterflyfish sp.","OTH",NA,NA,NA
+"CAAL","Carcharhinus altimus","Bignose shark","SHK",NA,NA,NA
+"CAAM","Carcharhinus amblyrhynchos","Blacktail reef shark","SHK",NA,NA,NA
+"CAAM","Carcharhinus amblyrhynchos","Blacktail reef shark","SHK",NA,NA,NA
+"CACA","Carcharodon carcharias","Great White Shark","SHK",NA,NA,NA
+"CAEQ","Carangoides equula","Whitefin trevally","OTB",NA,NA,NA
+"CAGA","Carcharhinus galapagensis","Galapagos shark","SHK",NA,NA,NA
+"CAFE","Carangoides ferdau","Blue trevally","OTB",NA,NA,NA
+"CAIG","Caranx ignobilis","Giant trevally","OTB",NA,NA,NA
+"CAIN","Canthigaster inframacula","Puffer","OTH",NA,NA,NA
+"CALU","Caranx lugubris","Black Trevally","OTB",NA,NA,NA
+"CAME","Caranx melampygus","Bluefin trevally","OTB",NA,NA,NA
+"CAOR","Carangoides orthogrammus","Island trevally","OTB",NA,NA,NA
+"CAOR","Carangoides orthogrammus","Island trevally","OTB",NA,NA,NA
+"CAOR","Carangoides orthogrammus","Island trevally","OTB",NA,NA,NA
+"CAOR","Carangoides orthogrammus","Island trevally","OTB",NA,NA,NA
+"CAOR","Carangoides orthogrammus","Island trevally","OTB",NA,NA,NA
+"CAPL","Carcharhinus plumbeus","Sandbar shark","SHK",NA,NA,NA
+"CASE","Caranx sexfasciatus","Bigeye trevally","OTB",NA,NA,NA
+"CHFR","Chaetodon fremblii","Bluestriped butterflyfish","OTH",NA,NA,NA
+"CHLU","Chaetodon lunula","Raccoon butterflyfish","OTH",NA,NA,NA
+"CHMI","Chaetodon miliaris","Millet butterflyfish","OTH",NA,NA,NA
+"CHST","Chromis struhsakeri","Struhsaker's chromis","OTH",NA,NA,NA
+"CHTI","Chaetodon tinkeri","Hawaiian butterflyfish","OTH",NA,NA,NA
+"CHVE","Chromis verater","Threespot chromis","OTH",NA,NA,NA
+"COBA","Coris ballieui","Lined coris","OTH",NA,NA,NA
+"COJA","Cookeolus japonicus","Hawaiian big-eye","OTH",NA,NA,NA
+"COJA","Cookeolus japonicus","Hawaiian big-eye","OTH",NA,NA,NA
+"COOL","Conger oligoporus","Conger eel","OTH",NA,NA,NA
+"CORO","Fistulariidae sp.","Cornetfish sp.","OTH",NA,NA,NA
+"DAMS","Chromis sp.","Damselfish sp.","OTH",NA,NA,NA
+"DARK","too dark to annotate","dark",NA,NA,NA,NA
+"DASY","Dasyatidae sp.","Stingray sp.","OTH",NA,NA,NA
+"DASY","Dasyatis sp.","Stingray sp.","OTH",NA,NA,NA
+"DASY","Stingray","Stingray sp.","OTH",NA,NA,NA
+"DEMA","Decapterus macarellus","Mackerel scad","OTH",NA,NA,NA
+"DEMU","Decapterus muroadsi","Amberstripe scad","OTH",NA,NA,NA
+"DESP","Decapterus sp.","Mackerel scad sp.","OTH",NA,NA,NA
+"DESP","Decapterus sp.","Mackerel scad sp.","OTH",NA,NA,NA
+"EAGL","Myliobatid sp.","Eagle ray sp.","OTH",NA,NA,NA
+"EESP","Anguilliformes sp.","Eel sp. ","OTH",NA,NA,NA
+"EESP","Anguilliformes sp.","Eel sp. ","OTH",NA,NA,NA
+"ELBI","Elagatis bipinnulata","Rainbow runner","OTH",NA,NA,NA
+"EMSP","Emmelichthyid sp.","Rover sp.","OTB",NA,NA,NA
+"ERSC","Erythrocles scintillans","Golden rover","OTB",NA,NA,NA
+"ERSC","Erythrocles scintillans","Golden rover","OTB",NA,NA,NA
+"ETCA","Etelis carbunculus","Ehu","DPS",1.551e-05,3.026,0.6171
+"ETCO","Etelis coruscans","Onaga","DPS",6.005e-05,2.673,0.3947
+"EUAF","Euthynnus affinis","Kawakawa","OTH",NA,NA,NA
+"EUIL","Eumegistus illustris","Monchong","OTH",NA,NA,NA
+"FISH","Teleost sp.","Bony fish sp.","OTH",NA,NA,NA
+"FISH","Teleost","Bony fish sp.","OTH",NA,NA,NA
+"FOLO","Forcipiger longirostris","Longnose butterflyfish","OTH",NA,NA,NA
+"GACU","Galeocerdo cuvier","Tiger shark","SHK",NA,NA,NA
+"GEPE","Genicanthus personatus","Masked Angelfish","OTH",NA,NA,NA
+"GOAT","Mullid sp.","Goatfish sp.","OTH",NA,NA,NA
+"GOAT","Mullid","Goatfish sp.","OTH",NA,NA,NA
+"GROU","Serranid sp.","Grouper","OTH",NA,NA,NA
+"GYBE","Gymnothorax berndti","Y-patterned moray","OTH",NA,NA,NA
+"GYNU","Gymnothorax nuttingi","Nutting's moray","OTH",NA,NA,NA
+"GYSP","Gymnothorax sp.","Moray sp.","OTH",NA,NA,NA
+"HEDI","Heniochus diphreutus","False moorish idol","OTH",NA,NA,NA
+"HEPO","Hemitaurichthys polylepis","Pyramid butterflyfish","OTH",NA,NA,NA
+"HESP","Heniochus sp.","Butterflyfish","OTH",NA,NA,NA
+"HYQU","Hyporthodus quernus","Hapuupuu","DPS",3.065e-05,2.884,1
+"HYQU","Hyporthodus quernus","Hapuupuu","DPS",3.065e-05,2.884,1
+"HYQU","Hyporthodus quernus","Hapuupuu","DPS",3.065e-05,2.884,1
+"INPA","Iniistius pavo","Peacock wrasse","OTH",NA,NA,NA
+"JACK","Carangid sp.","Jack sp.","OTH",NA,NA,NA
+"JACK","Carangoides sp.","Jack sp.","OTH",NA,NA,NA
+"JACK","Carangid","Jack sp.","OTH",NA,NA,NA
+"LIZA","Synodus sp.","Lizardfish","OTH",NA,NA,NA
+"LIZA","Synodus sp.","Lizardfish","OTH",NA,NA,NA
+"LUEA","Luzonichthys earlei","Earle's splitfin","OTB",NA,NA,NA
+"LUFL","Lutjanus fulvus","Blacktail snapper","OTH",NA,NA,NA
+"LUKA","Lutjanus kasmira","Bluestripe snapper","OTB",NA,NA,NA
+"LUKA","Lutjanus kasmira","Bluestripe snapper","OTB",NA,NA,NA
+"LUSP","Lutjanid sp.","Snapper sp.","OTB",NA,NA,NA
+"LUSP","Lutjanid","Snapper sp.","OTB",NA,NA,NA
+"LUZP","Luzonichthys sp.","Splitfin","OTB",NA,NA,NA
+"MEVI","Melichthys vidua","Pinktail triggerfish","OTH",NA,NA,NA
+"MORA","Muraenid sp.","Moray sp.","OTH",NA,NA,NA
+"MUPF","Mulloidichthys pfluegeri","Orange goatfish","OTH",NA,NA,NA
+"MUPF","Mulloidichthys pfluegeri","Orange goatfish","OTH",NA,NA,NA
+"MUVA","Mulloidichthys vanicolensis","Yellowfin goatfish","OTH",NA,NA,NA
+"MYSP","Myripristis sp.","Soldierfish sp.","OTH",NA,NA,NA
+"MYSP","Myripristis sp.","Soldierfish sp.","OTH",NA,NA,NA
+"MYSP","Myripristis sp.","Squirrelfish","OTH",NA,NA,NA
+"NABR","Naso brevirostris","Spotted unicornfish","OTH",NA,NA,NA
+"NAHE","Naso hexacanthus","Sleek unicornfish","OTH",NA,NA,NA
+"NAMA","Naso maculatus","spotted unicornfish","OTH",NA,NA,NA
+"NASP","Naso sp.","unicornfish sp.","OTH",NA,NA,NA
+"NASP","Acanthuridae","unicornfish sp.","OTH",NA,NA,NA
+"NONE","NONE","NONE","OTH",NA,NA,NA
+"NONE","NONE","NONE","OTH",NA,NA,NA
+"NONE","NONE","NONE","OTH",NA,NA,NA
+"NONE","NONE","NONE","OTH",NA,NA,NA
+"NONE","NONE","NONE","OTH",NA,NA,NA
+"NONE","NONE","NONE","OTH",NA,NA,NA
+"NONE","NONE","NONE","OTH",NA,NA,NA
+"NONE","No Fish in Drop","No Fish in Drop",NA,NA,NA,NA
+"NONE","No fish","No fish",NA,NA,NA,NA
+"ODEL","Odontanthias elizabethae","Elizabeth's Anthias","OTH",NA,NA,NA
+"ODFU","Odontanthias fuscipinnis","Hawaiian deep anthias","OTH",NA,NA,NA
+"OXUN","Oxycheilinus unifasciatus","Ringtail wrasse","OTH",NA,NA,NA
+"PAMU","Parupeneus multifasciatus","Manybar goatfish","OTH",NA,NA,NA
+"PAPO","Parupeneus porphyreus","Whitesaddle goatfish","OTH",NA,NA,NA
+"PERC","Perciformes","Fish","OTH",NA,NA,NA
+"PLDA","Plesiobatis daviesi","Deep-water stingray","OTH",NA,NA,NA
+"POBE","Polymixia berndti","Beardfish","OTH",NA,NA,NA
+"POMA","Pontinus macrocephalus","Large-headed scorpionfish","OTH",NA,NA,NA
+"PORC","Tetraodontinae sp.","Balloonfish","OTH",NA,NA,NA
+"PORC","Tetraodontinae sp.","Balloonfish","OTH",NA,NA,NA
+"PRAL","Priacanthus alalaua","Alalaua","OTH",NA,NA,NA
+"PRFI","Pristipomoides filamentosus","Opakapaka","DPS",2.311e-05,2.928,0.3459
+"PRFI","Pristipomoides filamentosus","Opakapaka","DPS",2.311e-05,2.928,0.3459
+"PRFI","Pristipomoides filamentosus","Opakapaka","DPS",2.311e-05,2.928,0.3459
+"PRSI","Pristipomoides sieboldii","Kalekale","DPS",2.243e-05,2.932,0.1364

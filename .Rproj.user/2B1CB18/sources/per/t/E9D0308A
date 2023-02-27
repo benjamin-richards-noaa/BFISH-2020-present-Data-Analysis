@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1631226600128.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4252206035",
+    "id" : "E9D0308A",
+    "lastKnownWriteTime" : 1631317738,
+    "last_content_update" : 1631317738148,
+    "path" : "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/scripts/10_BFISH Adundance at Length by Species.r",
+    "project_path" : "scripts/10_BFISH Adundance at Length by Species.r",
+    "properties" : {
+        "cursorPosition" : "141,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

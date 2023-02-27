@@ -1,0 +1,23 @@
+BFISH_biomass$Biomass_mt <- BFISH_biomass$Biomass_kg*0.001
+BFISH_biomass$SE_Biomass_mt <- BFISH_biomass$SE_Biomass_kg*0.001
+
+ggplot(data = BFISH_biomass, aes(x = as.factor(YEAR), y = Biomass_mt, group = COMMON_NAME)) +
+  #facet_grid(COMMON_NAME ~ ., scales = "free") +
+  #scale_y_continuous(labels = formatter(nsmall = 2)) +
+  #theme_bw() +
+  geom_line(aes(color = COMMON_NAME)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = Biomass_mt - SE_Biomass_mt, ymax = Biomass_mt + SE_Biomass_mt), width = 0.05, color = "grey33") +
+  scale_color_manual(values = c("Ehu" = "#F26739",
+                                "Gindai" = "#EF3E24",
+                                "Hapuupuu" = "#680B10",
+                                "Kalekale" = "#A91E23",
+                                "Lehi" = "#D12027",
+                                "Onaga" = "#F15B26",
+                                "Opakapaka" = "#F47B50"),
+                     #guide = FALSE) +
+  labs(x = "Survey Year", y = "Average Biomass (kg) ±SE)") +
+  theme(axis.text = element_text(size = 9),
+        axis.title = element_text(size=12,
+                                  face = "bold"),
+        axis.title.y = element_text(margin = margin(r=7.5)))

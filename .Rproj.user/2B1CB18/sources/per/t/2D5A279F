@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1629314631781.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "21|44|22|0|\n23|46|252|0|\n253|36|476|0|\n",
+    "hash" : "3962691295",
+    "id" : "2D5A279F",
+    "lastKnownWriteTime" : 1631577065,
+    "last_content_update" : 1640124829085,
+    "path" : "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/scripts/02-05 AR to Biomass.R",
+    "project_path" : "scripts/02-05 AR to Biomass.R",
+    "properties" : {
+        "cursorPosition" : "15,16",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

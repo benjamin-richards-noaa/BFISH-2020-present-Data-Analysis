@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1630457887263.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2768735417",
+    "id" : "F104FEA0",
+    "lastKnownWriteTime" : 1631317736,
+    "last_content_update" : 1631317736293,
+    "path" : "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/scripts/08_BFISH Allocation.R",
+    "project_path" : "scripts/08_BFISH Allocation.R",
+    "properties" : {
+        "cursorPosition" : "10,116",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

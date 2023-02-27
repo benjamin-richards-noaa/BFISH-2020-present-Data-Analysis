@@ -1,0 +1,152 @@
+#  Quantitative Methods for Coral Reef Fisheries Ecosystem Surveys, Part 2  ###
+#  Jerald S. Ault & Steven G. Smith, University of Miami RSMAS
+#  May 2017
+
+## Single Stage Stratified Random Sampling (StRS) Designs
+## Exercise VI_abund_len -- Calculates Abundance at Length
+
+library(ggplot2)
+library(gcookbook)
+library(plyr)
+library(stats)
+library(tidyverse)
+
+setwd("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/WORKING")
+
+# read in data tables: each year all seasons and gears
+fish <- rbind(
+				read.csv(file.path(getwd(),"BFISH_2020_F_AR data Both Gears Combined.csv"))
+				)
+
+#remove missing length data
+fish.2 <- subset(fish, LENGTH_CM >=0)
+
+## Stratum length-frequency computations
+fish.lenf <- ddply(fish.2, .(SPECIES_CD, STRATA_2020, YEAR, LENGTH_CM), summarize,
+             sum_len = sum(CPUE))
+
+totnum <- ddply(fish.lenf, .(SPECIES_CD, STRATA_2020, YEAR), summarize,
+                totnum = sum(sum_len))
+
+
+fish.lenf<-merge(fish.lenf,totnum, by = c("SPECIES_CD", "STRATA_2020", "YEAR"))
+
+fish.lenf$rfrq<-with(fish.lenf, ifelse(totnum==0,0,sum_len/totnum))
+
+fish.tot <- ddply(fish, .(YEAR, PSU, STRATA_2020, SPECIES_CD), summarize,
+             num = sum(CPUE))
+
+#### Stratified Random Sampling Survey (StRS) Design Computations  ####
+# Calculate mean Density (avdns), Variance of Density (svar), Sample Size (n) and Standard Deviation of Density (std)
+fish.est <- ddply(fish.tot, .(YEAR, STRATA_2020, SPECIES_CD), summarize, avdns = mean(num))
+
+# Merge ntot with fish.est 
+fish.est<-merge(fish.est,psu.count.2020, by="STRATA_2020")
+
+# Stratum-specific Estimates
+fish.est$yt<-with(fish.est,PSU_COUNT*avdns)
+
+fish.lenf.2<-merge(fish.est,fish.lenf, by= c("SPECIES_CD", "STRATA_2020", "YEAR"))
+
+fish.lenf.2$ytlen<-fish.lenf.2$yt*fish.lenf.2$rfrq
+
+fish.ytotlen <- ddply(fish.lenf.2, .(SPECIES_CD, YEAR, LENGTH_CM), summarize, ytotlen = sum(ytlen))
+
+###############################################
+
+# gcookbook routine to create barplot
+fish.lfplot<-arrange(fish.ytotlen,YEAR,SPECIES_CD,LENGTH_CM,ytotlen)
+
+############################## PLOT PARAMETERS #################################
+
+# Set the species and years we want plotted
+spec_to_plot  <- c("ETCA", "PRFI", "ETCO")
+yrs_to_plot   <- unique(fish.lfplot$YEAR)
+
+#set up binning
+bin.width <- 5
+nbins     <- ceiling(max(fish.lfplot$LENGTH_CM) / bin.width)
+nobs      <- length(fish.lfplot$LENGTH_CM)
+len.cat <- matrix(NA, nrow = nbins, ncol = 1)
+mid.len <- matrix(NA, nrow = nbins, ncol = 1)
+len.cat[1] <- 0
+count <- matrix(NA, nrow = nbins, ncol = 1)
+tot <- 0
+
+# subset the data
+lfplot <- subset(fish.lfplot, 
+                 SPECIES_CD %in% spec_to_plot & 
+                 YEAR %in% yrs_to_plot)
+
+# create the bins and mid.len
+for (i in 1:nbins)
+{
+  len.cat[i+1] <- len.cat[i]+bin.width
+  mid.len[i]<-(len.cat[i+1]+len.cat[i])/2
+}
+
+
+# Let's make a holder for abundance data by yr_species_combo
+abund_by_yr_spec <- c()
+
+# Loop through species and years to get the counts per yr-species combo
+for(spec in spec_to_plot){
+  for(yr in yrs_to_plot){
+    
+    yr_spec_data <- subset(lfplot, YEAR == yr & SPECIES_CD == spec)
+    
+    for (i in 1:nbins)
+    {
+      tot <- 0
+      for (j in 1:nrow(yr_spec_data))
+      {
+        ifelse((yr_spec_data$LENGTH_CM[j]) >= len.cat[i] & (yr_spec_data$LENGTH_CM[j]) < len.cat[i+1],
+               tot <- tot + yr_spec_data$ytotlen[j],
+               tot<-tot)
+      }
+      count[i] <- tot
+    }
+    
+    ysum <- sum(count)
+    count_freq <- count/ysum
+    
+    if(is.null(abund_by_yr_spec)){
+      abund_by_yr_spec <- tibble(YEAR       = yr, 
+                                 SPECIES_CD = spec,
+                                 mid.len    = as.numeric(mid.len),
+                                 count_freq = as.numeric(count_freq))
+    } else {
+      abund_by_yr_spec <- rbind(abund_by_yr_spec,
+                                tibble(YEAR       = yr, 
+                                       SPECIES_CD = spec,
+                                       mid.len    = as.numeric(mid.len),
+                                       count_freq = as.numeric(count_freq)))
+    }
+  }
+}
+
+# merge in the common names to use for plotting
+abund_by_yr_spec <- merge(abund_by_yr_spec, 
+                          SPECIES_TABLE[, c("COMMON_NAME", "SPECIES_CD")])
+
+# Generate the abundance densities
+ggplot(abund_by_yr_spec, aes(x=mid.len, y=count_freq, fill = COMMON_NAME)) + 
+      facet_grid(YEAR ~ COMMON_NAME) +
+      theme(strip.text.x = element_text(size=14),
+        strip.text.y = element_text(size=14)) +
+      geom_bar(stat="identity", colour="black", position="dodge") +
+      scale_fill_manual(values = c("Ehu" = "#F26739",
+                                "Onaga" = "#F15B26",
+                                "Opakapaka" = "#F47B50"),
+                     guide = FALSE) +
+
+  theme(axis.text.x = element_text(angle=0, hjust=1, vjust=1.5)) +
+  labs(x = "Fork Length (cm)", y = "Abundance", family="Helvetica",fontface="bold",size=16) +
+  theme(axis.line = element_line(colour="black",size=1.0))+
+  scale_x_continuous(limits = range(len.cat), 
+                     breaks = seq(min(len.cat),max(len.cat), bin.width * 2))+
+  theme(axis.text=element_text(size=12),axis.title=element_text(size=14,face="bold")) 
+
+# save the outputs to the working directory
+ggsave(paste("Deep 3 Length Frequency.pdf"), width = 11, height = 8.5, units = "in")
+ggsave(paste("Deep 3 Length Frequency.png"), width = 11, height = 8.5, units = "in")

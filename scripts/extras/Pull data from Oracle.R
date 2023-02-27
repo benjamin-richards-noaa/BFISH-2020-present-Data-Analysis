@@ -1,0 +1,78 @@
+###############################################################################################################
+## BFISH data ####
+## pull latest data from Oracle (must be connected to VPN)##
+
+#created by Benjamin L. Richards (benjamin.richards@noaa.gov) 
+
+###############################################################################################################
+
+#install packages
+library(readxl)
+library(DBI)
+library(odbc)
+library(rstudioapi)
+
+#set output directory
+setwd("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/ORACLE")
+
+#connect to Oracle database
+oracle <- dbConnect(odbc(),
+                 Driver = "Oracle in instantclient_21_3",
+                 DBQ = "pickaku.nmfs.local:1521/PIC",
+                 SVC = "BFISH",
+                 UID = "brichards",
+                 PWD = "glottal_dime5RAPIDS"
+                    )
+
+#change password @ https://picmid1.nmfs.local/dsc_rpts/dsc.dsc_change_pwd
+
+dbListTables(oracle,schema = "BFISH")
+
+# get data tables and write to local directory ---------------------------------------------------------------
+#Species list 
+SPECIES_TABLE <- dbGetQuery(oracle,"select * from BFISH.SPECIES_LOOKUP")
+spp_list.input <- subset(SPECIES_TABLE, select = c(SPECIES_CD, SCIENTIFIC_NAME, COMMON_NAME, SPECIES_TYPE_CD, A, B, GCF))
+
+  write.csv(spp_list.input, file = "SPECIES_TABLE.csv", row.names = F)
+
+#Research Fishing
+CRF_SAMPLE <- dbGetQuery(oracle,"select * from BFISH.CRF_SAMPLE")
+CRF_DRIFT <- dbGetQuery(oracle,"select * from BFISH.CRF_DRIFT")
+CRF_CATCH <- dbGetQuery(oracle,"select * from BFISH.CRF_CATCH")
+
+  write.csv(CRF_SAMPLE, file = "CRF_SAMPLE.csv", row.names = F)
+  write.csv(CRF_DRIFT, file = "CRF_DRIFT.csv", row.names = F)
+  write.csv(CRF_CATCH, file = "CRF_CATCH.csv", row.names = F)
+
+#MOUSS
+CAM_SAMPLE <- dbGetQuery(oracle,"select * from BFISH.CAM_SAMPLE")
+CAM_MAXN <- dbGetQuery(oracle,"select * from BFISH.CAM_MAXN")
+CAM_LENGTHS <- dbGetQuery(oracle,"select * from BFISH.CAM_LENGTHS")
+
+  write.csv(CAM_SAMPLE, file = "CAM_SAMPLE.csv", row.names = F)
+  write.csv(CAM_MAXN, file = "CAM_MAXN.csv", row.names = F)
+  write.csv(CAM_LENGTHS, file = "CAM_LENGTHS.csv", row.names = F)
+
+
+# bring in new data -------------------------------------------------------
+  new_CRF_SAMPLE <- read_excel("//pickingfish/users/Benjamin.Richards/Documents/Cruises/2021/BFISH_2021_F/Data/CRF/BFISH_2021_F Research Fishing data (corrected).xlsx", 
+                               sheet = "CRF_SAMPLE")
+  new_CRF_DRIFT <- read_excel("//pickingfish/users/Benjamin.Richards/Documents/Cruises/2021/BFISH_2021_F/Data/CRF/BFISH_2021_F Research Fishing data (corrected).xlsx", 
+                              sheet = "CRF_DRIFT")
+  new_CRF_CATCH <- read_excel("//pickingfish/users/Benjamin.Richards/Documents/Cruises/2021/BFISH_2021_F/Data/CRF/BFISH_2021_F Research Fishing data (corrected).xlsx", 
+                              sheet = "CRF_CATCH")
+
+#find miss-matched columns
+outersect <- function(x, y) {
+    sort(c(setdiff(x, y),
+           setdiff(y, x)))
+  }
+
+intersect(names(CRF_SAMPLE),names(new_CRF_SAMPLE))
+intersect(names(CRF_DRIFT),names(new_CRF_DRIFT))
+intersect(names(CRF_CATCH),names(new_CRF_CATCH))
+
+outersect(names(CRF_SAMPLE),names(new_CRF_SAMPLE))
+outersect(names(CRF_DRIFT),names(new_CRF_DRIFT))
+outersect(names(CRF_CATCH),names(new_CRF_CATCH))
+

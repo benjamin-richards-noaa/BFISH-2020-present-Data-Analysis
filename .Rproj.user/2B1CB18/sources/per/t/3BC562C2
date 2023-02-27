@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1629314638834.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "361582967",
+    "id" : "3BC562C2",
+    "lastKnownWriteTime" : 1635451098,
+    "last_content_update" : 1635451098510,
+    "path" : "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/scripts/06_BFISH Plotting Deep7 Biomass by speceis by year.R",
+    "project_path" : "scripts/06_BFISH Plotting Deep7 Biomass by speceis by year.R",
+    "properties" : {
+        "cursorPosition" : "30,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

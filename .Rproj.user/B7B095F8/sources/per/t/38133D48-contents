@@ -1,0 +1,63 @@
+###############################################################################################################
+## BFISH data processing ####
+## BFISH Allocation and randomization ##
+
+## This script is for processing BFISH data from years 2020-present ##
+
+
+#created by Benjamin L. Richards (benjaminrichards@noaa.gov) 
+###############################################################################################################
+
+setwd("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/WORKING")
+
+#set maximum number of PSUs available
+n.max <- 500
+
+#read in nstar table
+nstar.table <- read.csv("BFISH nstar_table.csv")
+
+#read in allocation table
+allocation.1 <- read.csv("BFISH pre-allocation table.csv")
+
+allocation.2 <- ddply(allocation.1, .(SPECIES_CD), summarize, sum_whstd = sum(whSTD))
+
+allocation.3 <- merge(allocation.1, allocation.2, "SPECIES_CD")
+
+#create the optimal weighting factor based on stratum size & variance
+allocation.3$wh_opt <- allocation.3$whSTD/allocation.3$sum_whstd
+
+#merge in PSU required for 15% cv or Max PSU available
+allocation.4 <- merge(allocation.3, subset(nstar.table, select = c(SPECIES_CD, nstar_15)), by = "SPECIES_CD")
+
+#create target number of PSU per species based on min of nstar_15 & n.max
+allocation.4$n_targ <- ifelse(allocation.4$nstar_15 < n.max,
+                              allocation.4$nstar_15,
+                              n.max)
+
+#create optimal number of PSU by species by strata
+allocation.4$nh_opt <- allocation.4$wh_opt * allocation.4$n_targ
+
+allocation.wide.1 <- dcast(allocation.4, STRATA_2020 ~ SPECIES_CD, value.var="wh_opt")
+names(allocation.wide.1)[2]<-"ETCA_whopt"
+names(allocation.wide.1)[3]<-"ETCO_whopt"
+names(allocation.wide.1)[4]<-"PRFI_whopt"
+
+allocation.wide.2 <- dcast(allocation.4, STRATA_2020 ~ SPECIES_CD, value.var="nh_opt")
+names(allocation.wide.2)[2]<-"ETCA_nhopt"
+names(allocation.wide.2)[3]<-"ETCO_nhopt"
+names(allocation.wide.2)[4]<-"PRFI_nhopt"
+
+allocation.wide.3 <- merge(psu.count.2020[, c("STRATA_2020", "STRATUM_WEIGHT")], allocation.wide.1, by = "STRATA_2020")
+allocation.wide.3 <- merge(allocation.wide.3, allocation.wide.2, by = "STRATA_2020")
+
+
+#compute maximum number of PSU per strata based on highest species-level optimum 
+allocation.wide.3$max_nh <- apply(allocation.wide.3[, c("ETCA_nhopt", "ETCO_nhopt", "PRFI_nhopt")], 1, max, na.rm = T)
+
+#computeproportioanl strata weighting
+allocation.wide.3$max_prp <- allocation.wide.3$max_nh / sum(allocation.wide.3$max_nh)
+
+#compute maximum number of PSU per strata based on available PSU
+allocation.wide.3$max_prp_nh <- allocation.wide.3$max_prp * n.max
+
+write.csv(allocation.wide.3, file = "BFISH allocation table.csv", row.names = F)

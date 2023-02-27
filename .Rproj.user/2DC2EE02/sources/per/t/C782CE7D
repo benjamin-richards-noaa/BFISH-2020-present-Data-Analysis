@@ -1,0 +1,26 @@
+{
+    "id": "C782CE7D",
+    "path": "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/scripts/extras/Pull data from Oracle.R",
+    "project_path": "scripts/extras/Pull data from Oracle.R",
+    "type": "r_source",
+    "hash": "4006058398",
+    "contents": "",
+    "dirty": false,
+    "created": 1651869712949.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "46,61",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1658888897,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1658888897,
+    "read_only": false,
+    "read_only_alternatives": []
+}

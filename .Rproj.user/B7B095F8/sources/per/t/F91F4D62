@@ -1,0 +1,28 @@
+{
+    "id": "F91F4D62",
+    "path": "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/scripts/01_BFISH Set General Conditions Init.R",
+    "project_path": "scripts/01_BFISH Set General Conditions Init.R",
+    "type": "r_source",
+    "hash": "682119686",
+    "contents": "",
+    "dirty": false,
+    "created": 1670011165882.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "10,0",
+        "scrollLine": "0",
+        "softWrapLines": "true",
+        "docOutlineVisible": "1"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1675882742,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1675882742878,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,46 @@
+###############################################################################################################
+## BFISH data ####
+## pull latest data from Oracle (must be connected to VPN)##
+
+#created by Benjamin L. Richards (benjaminrichards@noaa.gov) 
+
+###############################################################################################################
+
+#install packages
+library(ROracle)
+
+
+# Import Data -------------------------------------------------------------
+
+#connect to Oracle database
+con <- dbConnect(dbDriver("Oracle"),
+                 user = "brichards", #rstudioapi::askForPassword("Database user"),
+                 password = "evitable.PILLBOX6wiremen", #rstudioapi::askForPassword("Database password"), #change pw @ https://mid1.pic.gov/dsc_rpts/dsc.dsc_change_pwd
+                 dbname = "PIC")
+dbListTables(con,schema = "BFISH")
+
+
+#import data tables and copy to input directory
+#Species list 
+SPECIES_TABLE <- dbGetQuery(con,"select * from BFISH.SPECIES_LOOKUP")
+spp_list.input <- subset(SPECIES_TABLE, select = c(SPECIES_CD, SCIENTIFIC_NAME, COMMON_NAME, SPECIES_TYPE_CD, A, B, GCF))
+
+write.csv(spp_list.input, file = "./inputs/SPECIES_TABLE.csv", row.names = F)
+
+#Research Fishing
+CRF_SAMPLE <- dbGetQuery(con,"select * from BFISH.CRF_SAMPLE")
+CRF_DRIFT <- dbGetQuery(con,"select * from BFISH.CRF_DRIFT")
+CRF_CATCH <- dbGetQuery(con,"select * from BFISH.CRF_CATCH")
+
+write.csv(CRF_SAMPLE, file = "./inputs/CRF_SAMPLE.csv", row.names = F)
+write.csv(CRF_DRIFT, file = "./inputs/CRF_DRIFT.csv", row.names = F)
+write.csv(CRF_CATCH, file = "./inputs/CRF_CATCH.csv", row.names = F)
+
+#MOUSS
+CAM_SAMPLE <- dbGetQuery(con,"select * from BFISH.CAM_SAMPLE")
+CAM_MAXN <- dbGetQuery(con,"select * from BFISH.CAM_MAXN")
+CAM_LENGTHS <- dbGetQuery(con,"select * from BFISH.CAM_LENGTHS")
+
+write.csv(CAM_SAMPLE, file = "./inputs/CAM_SAMPLE.csv", row.names = F)
+write.csv(CAM_MAXN, file = "./inputs/CAM_MAXN.csv", row.names = F)
+write.csv(CAM_LENGTHS, file = "./inputs/CAM_LENGTHS.csv", row.names = F)

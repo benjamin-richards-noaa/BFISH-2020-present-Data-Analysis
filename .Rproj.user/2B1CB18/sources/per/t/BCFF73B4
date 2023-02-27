@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1629314639798.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "16|82|137|0|\n138|21|162|0|\n",
+    "hash" : "3657590256",
+    "id" : "BCFF73B4",
+    "lastKnownWriteTime" : 1631732537,
+    "last_content_update" : 1631732537937,
+    "path" : "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/scripts/07_BFISH Survey Design Analysis & plotting.R",
+    "project_path" : "scripts/07_BFISH Survey Design Analysis & plotting.R",
+    "properties" : {
+        "cursorPosition" : "230,41",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

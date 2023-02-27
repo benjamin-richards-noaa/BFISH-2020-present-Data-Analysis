@@ -1,0 +1,5 @@
+[1,"Installing 'ROracle' ...\r\n"]
+[1,"\r\n"]
+[2,"Installing package into '\\\\PICKINGFISH/users/Benjamin.Richards/Documents/R/win-library/4.1'\r\n(as 'lib' is unspecified)\r\n"]
+[1,"  These will not be installed\r\n"]
+[2,"Package which is only available in source form, and may need\r\n  compilation of C/C++/Fortran: 'ROracle'\r\n\r\n\r\n<U+2714> Package 'ROracle' successfully installed.\r\n"]

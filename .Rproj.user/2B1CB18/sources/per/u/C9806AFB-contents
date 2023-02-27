@@ -1,0 +1,9 @@
+Deep7.Biomass.PSU.Species.all.years <- rbind(read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/FINAL/BFISH_2016_F Deep7 Biomass by PSU & Species.csv"),
+                                             read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/FINAL/BFISH_2017_F Deep7 Biomass by PSU & Species.csv"),
+                                             read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/FINAL/BFISH_2018_F Deep7 Biomass by PSU & Species.csv"),
+                                             read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/FINAL/BFISH_2019_F Deep7 Biomass by PSU & Species.csv"),
+                                             read.csv("~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/FINAL/BFISH_2020_F Deep7 Biomass by PSU & Species.csv")
+  
+)
+
+write.csv(Deep7.Biomass.PSU.Species.all.years, "Deep7 Biomass by PSU.csv", row.names = F)
