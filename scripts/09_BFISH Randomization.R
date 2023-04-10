@@ -38,7 +38,9 @@ for(i in 1:length(grids.psu$STRATAbyISLAND)) {
 }
 
 grids <- subset(sample.allocation, select = "PSU")
-colnames(grids)[1] ="PSU_2023"
+colnames(grids)[1] = paste0(bfish_id.alloc,"_PSU")
+grids$Gear <- NA
+grids$rand <- runif(nrow(grids))
 
 View(grids)
 
