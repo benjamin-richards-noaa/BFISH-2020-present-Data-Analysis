@@ -64,6 +64,9 @@ BFISH <- BFISH %>%rename(
   common = ifelse(grepl("PRSI", Species), "Kalekale", common)) %>% dplyr::select(
     year, region, psu, stratum, spp,common, lat,lon, depth, wtcpue, )
 
+#divide wtCPUE by 25 for DisMAP
+BFISH$wtcpue <- BFISH$wtcpue/25
+
 BFISH<-BFISH[order(BFISH$year, BFISH$psu),]
 #save csv wherever
 write.csv(BFISH, "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/DisMAP/BFISH_DisMAP.csv", row.names = TRUE)
