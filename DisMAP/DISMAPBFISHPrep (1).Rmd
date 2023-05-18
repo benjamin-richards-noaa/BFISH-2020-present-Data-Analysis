@@ -1,0 +1,105 @@
+---
+title: "DisMap BFISH Data Prep"
+output: html_notebook
+---
+
+```{r}
+#install.packages(c("tidyverse", "fs"))
+library(dplyr)
+library(ggplot2)
+library(tidyverse) 
+library(fs)
+
+```
+
+```{r}
+#This file contains a host of environmental factors and information for the Hawaii Grid
+#substitute your file path 
+grid_domain <-read.csv(file = '~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/DisMAP/Deep7_BFISH_Stratified_Domain_Grid.csv')
+# using lat, lon, stratum, depth, and PSU for joining with sample data though there is more bathymetry data in the file
+grid_domain<-grid_domain[,c("PSU", "lat_deg", "lon_deg", "Depth_MEDIAN_m")]
+
+#getting list of data files(regex and location may have to be changed based on naming convention and data access)
+Biomassfiles<-as.list(dir(pattern = ".*Deep7 Biomass by PSU & Species.*", path = "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/WORKING/", full.names = T))
+BFISHBiomass <- Biomassfiles %>% 
+  # read in all of the csv's in the files list
+  purrr::map_dfr(read_csv)
+#wide to long table format: one entry for each PSU and species pair
+BFISH<- BFISHBiomass%>% pivot_longer(cols= c("APRU", "ETCA", "ETCO", "HYQU", "PRFI", "PRSI", "PRZO"),names_to = "Species")
+
+#PSU is the unique grid identifier for each cell, used to join together grid information and BFISH sampling from said grid
+BFISH <-left_join(BFISH, grid_domain, by = "PSU")
+BFISH
+```
+
+
+```{r}
+
+#renaming columns, adding region, Scientific Names and Common(Hawaiian) Names, selecting needed columns (year, stratum, wtcpue, lat, lon, depth)
+BFISH <- BFISH %>%rename(
+                       lat=lat_deg ,
+                       lon=lon_deg, 
+                       wtcpue= value,
+                       depth=Depth_MEDIAN_m,
+                       psu=PSU,
+                       stratum= STRATA_2020,
+                       year=YEAR
+                       ) %>% mutate(region= "Hawaii")%>% mutate(
+  spp= NA,
+  spp = ifelse(grepl("PRZO", Species), "Pristipomoides zonatus", spp),
+  spp = ifelse(grepl("ETCA", Species), "Etelis carbunculus", spp),
+  spp = ifelse(grepl("HYQU", Species), "Hyporthodus quernus", spp),
+  spp = ifelse(grepl("PRFI", Species), "Pristipomoides filamentosus", spp),
+  spp = ifelse(grepl("ETCO", Species), "Etelis coruscans", spp),
+  spp = ifelse(grepl("APRU", Species), "Aphareus rutilans", spp),
+  spp = ifelse(grepl("PRSI", Species), "Pristipomoides sieboldii", spp)) %>% mutate(
+    
+  common= NA,
+  common = ifelse(grepl("PRZO", Species), "Gindai", common),
+  common = ifelse(grepl("ETCA", Species), "Ehu", common),
+  common = ifelse(grepl("HYQU", Species), "Hapu'upu'u", common),
+  common = ifelse(grepl("PRFI", Species), "Opakapaka", common),
+  common = ifelse(grepl("ETCO", Species), "Onaga", common),
+  common = ifelse(grepl("APRU", Species), "Lehi", common),
+  common = ifelse(grepl("PRSI", Species), "Kalekale", common)) %>% dplyr::select(
+    year, region, psu, stratum, spp,common, lat,lon, depth, wtcpue, )
+
+BFISH<-BFISH[order(BFISH$year, BFISH$psu),]
+#save csv wherever
+write.csv(BFISH, "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/DisMAP/BFISH_DisMAP.csv", row.names = TRUE)
+
+```
+
+
+
+
+```{r}
+
+#p1 plot of sampling of strata vs year
+p1 <- BFISH %>% 
+    select(stratum, year) %>% 
+    ggplot(aes(x = as.factor(stratum), y = as.factor(year)))   +
+    geom_jitter()
+p1
+#p2 ploting sampling in terms of lat and lon 
+p2 <- BFISH %>%
+    select(lat, lon) %>% 
+    ggplot(aes(x = lon, y = lat)) +
+    geom_jitter()
+dev.off()
+p2
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
