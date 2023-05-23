@@ -158,6 +158,29 @@ ggsave("BFISH Deep 7 Standard-Normal Biomass by Speces by Year.pdf", width = 8.5
 ggsave("BFISH Deep 7 Standard-Normal Biomass by Species by Year.png", width = 8.5, height = 11, units = "in")
 ggsave("BFISH Deep 7 Standard-Normal Biomass by Species by Year (1-pager).png", width = 2.75, height =7, units = "in", bg = "transparent")
 
+# Compute & Plot Survey CV by Species & Year ------------------------------
+
+#getting list of data files(regex and location may have to be changed based on naming convention and data access)
+cv.total<-as.list(dir(pattern = ".*Deep7 Biomass Total.*", path = "~/Bottomfish/Bottomfish Project/BFISH/BFISH Data/Data Analysis/[R]/BFISH 2020-present Data Analysis/WORKING/", full.names = T))
+cv.total <- cv.total %>% 
+  # read in all of the csv's in the files list
+  purrr::map_dfr(read_csv)
+
+
+ggplot(data = cv.total, aes(x = as.factor(YEAR), y = CV_Biomass_kg, group = 1,)) +
+  geom_hline(linetype = "longdash", yintercept = 0, size = 0.5, color = "black") +
+  theme_bw() +
+  geom_line(color = "grey33") +
+  geom_point(size = 3, color = "#F26739") +
+  ylim(10,25) +
+  labs(x = "BFISH Survey Year", y = "Deep 7 Complex CV of Biomass (kg)") +
+  theme(axis.text = element_text(size = 9, angle = 90),
+        axis.title = element_text(size=12,
+                                  face = "bold"),
+        axis.title.y = element_text(margin = margin(r=5)))
+
+ggsave("BFISH Deep 7 CV by Year.pdf", width = 11, height = 8.5, units = "in")
+ggsave("BFISH Deep 7 CV by Year.png", width = 11, height = 8.5, units = "in")
 
 # Plotting for 1-pager ----------------------------------------------------
 
